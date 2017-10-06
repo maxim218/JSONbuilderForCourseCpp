@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Генератор JSON</title>
+	<style>
+		body{
+			padding: 30px;	
+		}
+	</style>
+</head>
+<body>
+
+	<h1>Генератор JSON</h1>
+	<br>
+	
+	<form>
+		<p>Название команды</p>
+		<input type = "text" value = "" size = "100" id = "team">
+		<p>Название проекта</p>
+		<input type = "text" value = "" size = "100" id = "project">
+		<p>Описание проекта</p>
+		<input type = "text" value = "" size = "100" id = "description">
+	</form>
+	
+	<br>
+	<br>
+	<br>
+	
+	<h2>Человек 1</h2>
+	<form id = "f1">
+		<p>Имя</p>
+		<input type = "text" value = "" size = "50">	
+		<p>Фамилия</p>
+		<input type = "text" value = "" size = "50">
+		<p>Группа</p>
+		<select size = "1">
+			<option value = "1">АПО-11 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+			<option value = "2">АПО-12</option>
+			<option value = "3">АПО-13</option>
+		</select>
+	</form>
+	
+	<br>
+	<br>
+	
+	<h2>Человек 2</h2>
+	<form id = "f2">
+		<p>Имя</p>
+		<input type = "text" value = "" size = "50">	
+		<p>Фамилия</p>
+		<input type = "text" value = "" size = "50">
+		<p>Группа</p>
+		<select size = "1">
+			<option value = "1">АПО-11 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+			<option value = "2">АПО-12</option>
+			<option value = "3">АПО-13</option>
+		</select>
+	</form>
+	
+	<br>
+	<br>
+	
+	<h2>Человек 3</h2>
+	<form id = "f3">
+		<p>Имя</p>
+		<input type = "text" value = "" size = "50">	
+		<p>Фамилия</p>
+		<input type = "text" value = "" size = "50">
+		<p>Группа</p>
+		<select size = "1">
+			<option value = "1">АПО-11 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+			<option value = "2">АПО-12</option>
+			<option value = "3">АПО-13</option>
+		</select>
+	</form>
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	
+	<input type = "button" style = "width: 300px; height: 100px;" value = "Получить JSON" onclick = "resFunc()">
+	
+	<br>
+	<br>
+	
+	<textarea id = 'res' style = "width: 300px; height: 200px"></textarea>
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	
+	<script>
+		function elem(s){
+			s = s + "";
+			return document.getElementById(s);
+		}
+		
+		console.log("Колотовкин Максим");
+		
+		function resFunc(){
+				let myObj = {
+					name: elem("team").value,
+					project: {
+						name: elem("project").value,
+						description: elem("description").value
+					},
+					size: 3,
+					members: [
+						{
+							name: elem("f1").children[1].value,
+							surname: elem("f1").children[3].value,
+							group: ("АПО-1" + elem("f1").children[5].value)
+						},
+						{
+							name: elem("f2").children[1].value,
+							surname: elem("f2").children[3].value,
+							group: ("АПО-1" + elem("f2").children[5].value)
+						},
+						{
+							name: elem("f3").children[1].value,
+							surname: elem("f3").children[3].value,
+							group: ("АПО-1" + elem("f3").children[5].value)
+						}
+					]
+				}
+				
+				elem("res").value = "" + (JSON.stringify(myObj));
+				
+		}
+	</script>
+	
+</body>
+</html>
